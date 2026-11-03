@@ -13,10 +13,10 @@ afterEach(async () => {
 });
 
 describe("tool catalogue", () => {
-  it("lists all 14 tools with read-only annotations", async () => {
+  it("lists all 15 tools with read-only annotations", async () => {
     const { tools } = await h.client.listTools();
     expect(tools.map((t) => t.name).sort()).toEqual(TOOLS.map((t) => t.name).sort());
-    expect(tools).toHaveLength(14);
+    expect(tools).toHaveLength(15);
     for (const t of tools) {
       expect(t.annotations?.readOnlyHint).toBe(true);
       expect(t.description?.length ?? 0).toBeGreaterThan(40);
@@ -109,6 +109,39 @@ describe("read_edition", () => {
   });
   it("requires edition_id or text_id", async () => {
     expect(await h.callError("read_edition", {})).toContain("provide edition_id or text_id");
+  });
+});
+
+describe("get_full_content", () => {
+  it("pages all segments, fetches one covering span, restores breaks", async () => {
+    const r = await h.call("get_full_content", { text_id: "T2" });
+    expect(r.edition_id).toBe("E2");
+    expect(r.segment_count).toBe(2);
+    expect(r.span).toEqual({ start: 0, end: 60 });
+    expect(r.content).toBe(EN_CONTENT.slice(0, 40) + "\n\n" + EN_CONTENT.slice(40, 60));
+    expect(r.truncated).toBe(false);
+    expect(h.fake.callsTo("getEditionContent")).toEqual([["E2", { start: 0, end: 60 }]]);
+    expect(h.fake.callsTo("listEditionSegments")).toEqual([["E2", { limit: 500, offset: 0 }]]);
+  });
+  it("supports segments and raw formats", async () => {
+    const seg = (await h.call("get_full_content", { edition_id: "E2", format: "segments" })) as { segments: Array<{ reference: string; content: string }> };
+    expect(seg.segments.map((s) => s.reference)).toEqual(["1", "2"]);
+    const raw = await h.call("get_full_content", { edition_id: "E2", format: "raw" });
+    expect(raw.content).toBe(EN_CONTENT);
+    expect(raw.text_id).toBe("T2");
+  });
+  it("follows has_more across pages and caps at max_chars", async () => {
+    const n = 1200;
+    const big = Array.from({ length: n }, (_, i) => ({ id: `B${i}`, lines: [{ start: i * 2, end: i * 2 + 2 }], type: "verse" as const, reference: String(i) }));
+    await h.close();
+    h = await createHarness({ contents: { E1: BO_CONTENT, E2: "ab".repeat(n) }, segments: { E1: [], E2: big } });
+    const r = (await h.call("get_full_content", { edition_id: "E2", max_chars: 1000 })) as Record<string, unknown>;
+    expect(h.fake.callsTo("listEditionSegments").map((a) => (a[1] as { offset: number }).offset)).toEqual([0, 500, 1000]);
+    expect(r.segment_count).toBe(n);
+    expect(r.truncated).toBe(true);
+    expect(r.span).toEqual({ start: 0, end: 1000 });
+    expect(r.next_span_start).toBe(1000);
+    expect((r.content as string).split("\n\n")).toHaveLength(500);
   });
 });
 

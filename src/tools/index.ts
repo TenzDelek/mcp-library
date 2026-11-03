@@ -4,6 +4,7 @@ import { runTool, type ToolDef, type ToolDeps } from "./_shared.js";
 import { searchTexts } from "./search-texts.js";
 import { getText } from "./get-text.js";
 import { readEdition } from "./read-edition.js";
+import { getFullContent } from "./get-full-content.js";
 import { searchContent } from "./search-content.js";
 import { getSegment } from "./get-segment.js";
 import { listSegments } from "./list-segments.js";
@@ -19,6 +20,7 @@ export const TOOLS: ReadonlyArray<ToolDef<any>> = [
   searchTexts,
   getText,
   readEdition,
+  getFullContent,
   searchContent,
   getSegment,
   listSegments,

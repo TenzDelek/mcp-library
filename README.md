@@ -83,6 +83,7 @@ edition. Positions in content are Unicode code points, end-exclusive. Lists have
 | `search_texts` | Find texts by title and filters (language, category, tags, author, BDRC/Wikidata id) |
 | `get_text` | One text with titles, contributors, editions, translations, commentaries, optional family |
 | `read_edition` | Read a window of an edition's content; accepts an edition id or a text id |
+| `get_full_content` | Whole text of an edition in one call: pages all segments, spans first start to last end, restores line breaks |
 | `search_content` | Full-text search inside editions, with context and segment ids |
 | `get_segment` | One segment with its text, optionally with related segments in another language |
 | `list_segments` | Page through an edition's segments with their text |

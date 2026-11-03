@@ -3,7 +3,7 @@
  * original and its English translation), one edition each, aligned segments,
  * one person, categories, tags, languages, one recording.
  *
- * Tibetan content below is 30 code points long; English content is 60.
+ * English content is exactly 60 code points; Tibetan length is computed in tests.
  */
 import type {
   CategoryOutput,
@@ -23,7 +23,7 @@ import type {
 } from "../../src/library/schemas.js";
 
 export const BO_CONTENT = "བཅོམ་ལྡན་འདས་མ་ཤེས་རབ་ཀྱི་ཕ་རོལ་ཏུ་ཕྱིན་པ"; // 30 code points? computed in tests
-export const EN_CONTENT = "Homage to the Bhagavati Prajnaparamita. Thus have I heard.";
+export const EN_CONTENT = "Homage to the Bhagavati Prajnaparamita. Thus have I heard.Om"; // exactly 60 code points
 
 export const texts: TextOutput[] = [
   {
