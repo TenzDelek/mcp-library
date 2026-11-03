@@ -1,0 +1,72 @@
+[
+  {
+    "id": "reYrCR4TFKpHbU8V2wH6d",
+    "title": {
+      "bo": "བཀའ་འགྱུར།",
+      "en": "Kangyur"
+    },
+    "description": {
+      "en": "Canonical words of the Buddha translated into Tibetan (Degé Kangyur)"
+    }
+  },
+  {
+    "id": "ZPcgMZgVJxAMQ7rpfW72a",
+    "title": {
+      "hi": "वज्रयान",
+      "mn": "Очир хөлгөн",
+      "vi": "Kim Cương thừa",
+      "ne": "वज्रयान",
+      "en": "Vajrayāna",
+      "bo": "རྡོ་རྗེ་ཐེག་པ།",
+      "zh": "金剛乘"
+    },
+    "description": {
+      "en": "key: tradition/vajrayana\nBuddhist tradition of the text, mirroring the app's onboarding choice 'Sanskrit & Tibetan scriptures'. Applied to root texts; the backend cascades it to their translations."
+    }
+  },
+  {
+    "id": "zjHEBN2egpftHD7BRMQko",
+    "title": {
+      "hi": "महायान",
+      "mn": "Их хөлгөн",
+      "vi": "Đại thừa",
+      "ne": "महायान",
+      "en": "Mahāyāna",
+      "bo": "ཐེག་པ་ཆེན་པོ།",
+      "zh": "大乘"
+    },
+    "description": {
+      "en": "key: tradition/mahayana\nBuddhist tradition of the text, mirroring the app's onboarding choice 'Chinese scriptures'. Applied to root texts; the backend cascades it to their translations."
+    }
+  },
+  {
+    "id": "296WZOr8MXWteSqBBI7pl",
+    "title": {
+      "hi": "थेरवाद",
+      "mn": "Тэравада",
+      "vi": "Theravāda",
+      "ne": "थेरवाद",
+      "en": "Theravāda",
+      "bo": "གནས་བརྟན་སྡེ་པ།",
+      "zh": "上座部"
+    },
+    "description": {
+      "en": "key: tradition/theravada\nBuddhist tradition of the text, mirroring the app's onboarding choice 'Pāli scriptures'. Applied to root texts; the backend cascades it to their translations."
+    }
+  },
+  {
+    "id": "FZ5STsdU0eLvo7Nb2CpvH",
+    "title": {
+      "mn": "Уншлага",
+      "hi": "पाठ",
+      "vi": "Tụng niệm",
+      "ne": "पाठ",
+      "en": "Chants",
+      "bo": "ཞལ་འདོན།",
+      "zh": "課誦"
+    },
+    "description": {
+      "en": "key: practice/chant\nTexts recited as practice in the WeBuddhist app; drives the Chants screen. Replaces the use of the Liturgy category for that purpose."
+    }
+  }
+]

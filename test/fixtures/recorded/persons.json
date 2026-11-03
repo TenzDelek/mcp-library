@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "id": "00X8OpJDvQYno9lX37kOO",
+      "name": {
+        "bo": "བསོད་ནམས་ལྡེའུ་བསྟན།"
+      },
+      "alt_names": null,
+      "bdrc": "P2MS9536",
+      "wiki": null
+    },
+    {
+      "id": "00gSVBBQLim1FdOjUcJPQ",
+      "name": {
+        "bo": "ཏི་པུ་པ།"
+      },
+      "alt_names": null,
+      "bdrc": "P0RK59",
+      "wiki": null
+    },
+    {
+      "id": "00jAq7zUxwZXd6IQhjFba",
+      "name": {
+        "bo": "མཁན་ཆེན་བསྟན་པ་རབ་རྒྱས།"
+      },
+      "alt_names": null,
+      "bdrc": "P7517",
+      "wiki": null
+    }
+  ],
+  "has_more": true,
+  "offset": 0,
+  "limit": 3
+}

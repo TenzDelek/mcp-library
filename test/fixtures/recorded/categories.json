@@ -1,0 +1,136 @@
+[
+  {
+    "id": "NDXKdNtZe9Kxl6Y4yBMAr",
+    "title": {
+      "en": "Mind-only Treatises",
+      "bo": "སེམས་ཙམ།"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "SoGlGBaboYkVa7b9qJvvK",
+    "title": {
+      "en": "Miscellaneous",
+      "bo": "སྣ་ཚོགས།"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "YQnenyXmCd2VbVHPUFGWM",
+    "title": {
+      "en": "History and Stories",
+      "bo": "ལོ་རྒྱུས་དང་སྒྲུང་།"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "Rrl0usffAJJbYTYe1euws",
+    "title": {
+      "bo": "རིག་གནས།",
+      "en": "Linguistics Treatises"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "4wuvGxIgXNZ5mb0bDWvkC",
+    "title": {
+      "bo": "འདུལ་བ།",
+      "en": "Monastic Rules"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "XfCwZpoJMtfO7s0laQkdK",
+    "title": {
+      "bo": "མདོ་སྡེ།",
+      "en": "Discourses"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "sEStEY4RRWU7U23rkiOk5",
+    "title": {
+      "bo": "བློ་སྦྱོང་དང་བསླབ་བྱ།",
+      "en": "Mind Trainings and Advices"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "v3L4eTn4x2E30znIhHvQe",
+    "title": {
+      "en": "Logic",
+      "bo": "ཚད་མ།"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "REBGnT4qFooPfPEkR5pe5",
+    "title": {
+      "en": "Tantras",
+      "bo": "རྒྱུད་སྡེ།"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "uGpinx0GZlvU1uw44RyYS",
+    "title": {
+      "bo": "ཤེར་ཕྱིན།",
+      "en": "Prajñāpāramitā",
+      "zh": "般若"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "LCorCb2K98p3TICt3UCDm",
+    "title": {
+      "en": "Liturgy",
+      "bo": "ཞལ་འདོན།",
+      "zh": "實修儀軌"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "MZUUxphQ0yFwLBon3Vng8",
+    "title": {
+      "en": "Systematic Treatises",
+      "bo": "མངོན་པ།",
+      "zh": "阿毘達磨"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  },
+  {
+    "id": "JD5ULLPAV1cxg7RSb7L3q",
+    "title": {
+      "en": "Middle Way",
+      "bo": "དབུ་མ།",
+      "zh": "中觀"
+    },
+    "description": null,
+    "parent_id": null,
+    "children": []
+  }
+]

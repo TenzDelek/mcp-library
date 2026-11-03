@@ -1,0 +1,44 @@
+{
+  "name": "@webuddhist/mcp-library",
+  "version": "0.1.0",
+  "description": "MCP server exposing the WeBuddhist Library (OpenPecha API v2) read-only endpoints as tools",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "mcp-library": "dist/bin/stdio.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "node --env-file-if-exists=.env --import tsx bin/stdio.ts",
+    "dev:http": "node --env-file-if-exists=.env --import tsx bin/http.ts",
+    "check": "node --env-file-if-exists=.env --import tsx bin/stdio.ts --check",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run --exclude test/live/**",
+    "test:live": "vitest run test/live",
+    "record-fixtures": "tsx scripts/record-fixtures.ts",
+    "inspect": "npx @modelcontextprotocol/inspector node --env-file-if-exists=.env dist/bin/stdio.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "eslint": "^10.14.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

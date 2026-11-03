@@ -1,0 +1,66 @@
+[
+  {
+    "code": "bo",
+    "name": "tibetan"
+  },
+  {
+    "code": "en",
+    "name": "english"
+  },
+  {
+    "code": "fr",
+    "name": "french"
+  },
+  {
+    "code": "hi",
+    "name": "hindi"
+  },
+  {
+    "code": "i9",
+    "name": "i9138probe"
+  },
+  {
+    "code": "ja",
+    "name": "japanese"
+  },
+  {
+    "code": "lzh",
+    "name": "classical chinese"
+  },
+  {
+    "code": "mn",
+    "name": "mongolian"
+  },
+  {
+    "code": "mr",
+    "name": "Marathi"
+  },
+  {
+    "code": "ne",
+    "name": "nepali"
+  },
+  {
+    "code": "pi",
+    "name": "pali"
+  },
+  {
+    "code": "ru",
+    "name": "russian"
+  },
+  {
+    "code": "sa",
+    "name": "sanskrit"
+  },
+  {
+    "code": "th",
+    "name": "thai"
+  },
+  {
+    "code": "vi",
+    "name": "vietnamese"
+  },
+  {
+    "code": "zh",
+    "name": "chinese"
+  }
+]
