@@ -1,5 +1,7 @@
 # @webuddhist/mcp-library
 
+<img width="1512" height="946" alt="Screenshot 2026-11-03 at 12 33 13 PM" src="https://github.com/user-attachments/assets/4722344d-6301-4e46-99ef-c0520b2c9415" />
+
 An [MCP](https://modelcontextprotocol.io) server that gives AI agents read-only access to the
 WeBuddhist Library (OpenPecha API v2): Buddhist texts, their editions, translations, commentaries,
 segments, alignments, people, categories and audio recordings.
