@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri"
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "server": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "remote": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "url"
+          ],
+          "additionalProperties": false
+        },
+        "local": {
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string",
+              "minLength": 1
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "envKey": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Z0-9_]*$"
+            }
+          },
+          "required": [
+            "command",
+            "args",
+            "envKey"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "remote",
+        "local"
+      ],
+      "additionalProperties": false
+    },
+    "skills": {
+      "default": {
+        "dir": "skills"
+      },
+      "type": "object",
+      "properties": {
+        "dir": {
+          "default": "skills",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dir"
+      ],
+      "additionalProperties": false
+    },
+    "hosts": {
+      "type": "object",
+      "properties": {
+        "claude": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "local",
+                "remote"
+              ]
+            },
+            "marketplace": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64,
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "category": {
+              "type": "string"
+            },
+            "keywords": {
+              "default": [],
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "mode",
+            "marketplace",
+            "keywords"
+          ],
+          "additionalProperties": false
+        },
+        "gemini": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "local",
+                "remote"
+              ]
+            },
+            "contextFileName": {
+              "default": "GEMINI.md",
+              "type": "string"
+            }
+          },
+          "required": [
+            "mode",
+            "contextFileName"
+          ],
+          "additionalProperties": false
+        },
+        "dsh": {
+          "type": "object",
+          "properties": {
+            "packageName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "engines": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "packageName",
+            "engines"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "claude",
+        "gemini",
+        "dsh"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "name",
+    "displayName",
+    "description",
+    "version",
+    "license",
+    "homepage",
+    "author",
+    "server",
+    "skills",
+    "hosts"
+  ],
+  "additionalProperties": false
+}

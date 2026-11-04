@@ -2,7 +2,7 @@
   "mcpServers": {
     "webuddhist-library": {
       "command": "node",
-      "args": ["${workspaceFolder}/dist/bin/stdio.js"],
+      "args": ["${workspaceFolder}/packages/connector-server/dist/bin/stdio.js"],
       "env": {
         "LIBRARY_API_KEY": "${env:LIBRARY_API_KEY}"
       }

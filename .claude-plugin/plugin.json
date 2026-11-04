@@ -1,0 +1,42 @@
+{
+  "name": "buddhist-creator-connector",
+  "displayName": "Buddhist Creator Connector",
+  "version": "0.2.0",
+  "description": "Find, read, cite and compare Buddhist texts from the WeBuddhist Library: Tibetan canon, translations, commentaries, chants and recordings.",
+  "author": {
+    "name": "WeBuddhist",
+    "url": "https://webuddhist.com"
+  },
+  "homepage": "https://github.com/TenzDelek/buddhist-creator-connector",
+  "repository": "https://github.com/TenzDelek/buddhist-creator-connector",
+  "license": "MIT",
+  "keywords": [
+    "buddhism",
+    "tibetan",
+    "sutra",
+    "citation",
+    "translation",
+    "webuddhist"
+  ],
+  "mcpServers": {
+    "webuddhist-library": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@webuddhist/connector-server"
+      ],
+      "env": {
+        "LIBRARY_API_KEY": "${user_config.library_api_key}"
+      }
+    }
+  },
+  "userConfig": {
+    "library_api_key": {
+      "type": "string",
+      "title": "WeBuddhist Library API key",
+      "description": "Issued by the WeBuddhist library team. Stored in your secure credential store and passed only to the local connector process.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

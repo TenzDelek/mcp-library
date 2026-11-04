@@ -1,0 +1,20 @@
+{
+  "name": "@webuddhist/buddhist-creator-dsh",
+  "version": "0.2.0",
+  "description": "Buddhist Creator Connector bundle for DeepSeek Harness",
+  "license": "MIT",
+  "homepage": "https://github.com/TenzDelek/buddhist-creator-connector",
+  "files": [
+    "cordis.patch.yml",
+    "skills",
+    "README.md"
+  ],
+  "engines": {
+    "dsh": ">=0.1.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

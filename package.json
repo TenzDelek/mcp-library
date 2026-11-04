@@ -1,34 +1,34 @@
 {
-  "name": "@webuddhist/mcp-library",
-  "version": "0.1.0",
-  "description": "MCP server exposing the WeBuddhist Library (OpenPecha API v2) read-only endpoints as tools",
+  "name": "buddhist-creator-connector",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Source hub for the Buddhist Creator Connector: skills, MCP server, generated per-store wrappers and the optimization loop",
   "type": "module",
   "license": "MIT",
   "engines": {
     "node": ">=20"
   },
-  "bin": {
-    "mcp-library": "dist/bin/stdio.js"
-  },
-  "files": [
-    "dist",
-    "README.md"
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "wrappers/dsh-bundle"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "dev": "node --env-file-if-exists=.env --import tsx bin/stdio.ts",
-    "dev:http": "node --env-file-if-exists=.env --import tsx bin/http.ts",
-    "check": "node --env-file-if-exists=.env --import tsx bin/stdio.ts --check",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc -b",
+    "typecheck": "tsc -b",
     "lint": "eslint .",
-    "test": "vitest run --exclude test/live/**",
-    "test:live": "vitest run test/live",
-    "record-fixtures": "tsx scripts/record-fixtures.ts",
-    "inspect": "npx @modelcontextprotocol/inspector node --env-file-if-exists=.env dist/bin/stdio.js"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.32.2",
-    "zod": "^4.6.7"
+    "pretest": "tsc -b",
+    "test": "vitest run",
+    "test:live": "npm run test:live -w packages/connector-server",
+    "generate": "tsx scripts/generate-wrappers.ts",
+    "generate:check": "tsx scripts/generate-wrappers.ts --check",
+    "verify": "npm run generate:check && npm run validate:plugin",
+    "validate:plugin": "claude plugin validate . || echo 'claude CLI not available; skipped'",
+    "check": "npm run check -w packages/connector-server",
+    "dev": "npm run dev -w packages/connector-server",
+    "dev:remote": "npm run dev -w apps/remote",
+    "record-fixtures": "npm run record-fixtures -w packages/library-client",
+    "inspect": "npx @modelcontextprotocol/inspector node --env-file-if-exists=.env packages/connector-server/dist/bin/stdio.js"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
@@ -37,8 +37,5 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.72.1",
     "vitest": "^5.1.0"
-  },
-  "allowScripts": {
-    "esbuild@0.28.2": true
   }
 }

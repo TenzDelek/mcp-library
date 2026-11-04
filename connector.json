@@ -1,0 +1,22 @@
+{
+  "$schema": "./packages/connector-manifest/connector.schema.json",
+  "name": "buddhist-creator-connector",
+  "displayName": "Buddhist Creator Connector",
+  "description": "Find, read, cite and compare Buddhist texts from the WeBuddhist Library: Tibetan canon, translations, commentaries, chants and recordings.",
+  "version": "0.2.0",
+  "license": "MIT",
+  "homepage": "https://github.com/TenzDelek/buddhist-creator-connector",
+  "repository": "https://github.com/TenzDelek/buddhist-creator-connector",
+  "author": { "name": "WeBuddhist", "url": "https://webuddhist.com" },
+  "server": {
+    "name": "webuddhist-library",
+    "remote": { "url": "https://connector.webuddhist.com/mcp" },
+    "local": { "command": "npx", "args": ["-y", "@webuddhist/connector-server"], "envKey": "LIBRARY_API_KEY" }
+  },
+  "skills": { "dir": "skills" },
+  "hosts": {
+    "claude": { "mode": "local", "marketplace": "webuddhist", "category": "research", "keywords": ["buddhism", "tibetan", "sutra", "citation", "translation", "webuddhist"] },
+    "gemini": { "mode": "local", "contextFileName": "GEMINI.md" },
+    "dsh": { "packageName": "@webuddhist/buddhist-creator-dsh", "engines": ">=0.1.0" }
+  }
+}

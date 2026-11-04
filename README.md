@@ -1,137 +1,69 @@
-# @webuddhist/mcp-library
+# Buddhist Creator Connector
 
-<img width="1512" height="946" alt="Screenshot 2026-11-03 at 12 33 13 PM" src="https://github.com/user-attachments/assets/4722344d-6301-4e46-99ef-c0520b2c9415" />
+Give AI assistants a trustworthy way into the **WeBuddhist Library**: find Buddhist texts (Tibetan canon, translations, commentaries, chants and recordings), read them, quote them with exact citations, and compare an original with its translation side by side.
 
-An [MCP](https://modelcontextprotocol.io) server that gives AI agents read-only access to the
-WeBuddhist Library (OpenPecha API v2): Buddhist texts, their editions, translations, commentaries,
-segments, alignments, people, categories and audio recordings.
+It ships as a *connector* for every major host and as portable [Agent Skills](https://agentskills.io), all generated from one source in this repository:
 
-Only GET endpoints are exposed. The library API key never leaves this server: it is read from the
-environment, sent as `X-API-Key`, and is never logged, returned in tool output, or included in error text.
+| Host | What you install | Guide |
+|---|---|---|
+| Claude Code | plugin from this repo's marketplace | [docs/install/claude-code.md](docs/install/claude-code.md) |
+| claude.ai, Claude Desktop, Cowork | custom connector (hosted URL, Phase B) | [docs/install/claude.md](docs/install/claude.md) |
+| ChatGPT | custom connector (hosted URL, Phase B) | [docs/install/chatgpt.md](docs/install/chatgpt.md) |
+| Gemini CLI | extension from this repo | [docs/install/gemini-cli.md](docs/install/gemini-cli.md) |
+| DeepSeek Harness | `@webuddhist/buddhist-creator-dsh` bundle | [docs/install/deepseek-harness.md](docs/install/deepseek-harness.md) |
+| Any agent via the skills CLI | `npx skills add TenzDelek/buddhist-creator-connector` | [docs/install/skills-cli.md](docs/install/skills-cli.md) |
 
-## Requirements
+## Skills
 
-- Node.js 20 or newer
-- A library API key (ask the WeBuddhist library team)
-
-## Install and build
-
-```bash
-npm install
-npm run build
-```
-
-Check that the key and connectivity work (prints the health response, never the key):
-
-```bash
-LIBRARY_API_KEY=... npm run check
-```
-
-## Configuration
-
-| Variable | Required | Default | Purpose |
-|---|---|---|---|
-| `LIBRARY_API_KEY` | yes | | API key sent as `X-API-Key` |
-| `LIBRARY_API_URL` | no | `https://library-prod.webuddhist.com` | Base URL |
-| `LIBRARY_APP_NAME` | no | `webuddhist` | Sent as `X-Application` (required by the categories/tags endpoints) |
-| `LIBRARY_PREFERRED_LANGUAGES` | no | `en,bo` | Order used to pick one title/name when several languages exist |
-| `LIBRARY_TIMEOUT_MS` | no | `30000` | Per-request timeout (content requests get at least 60 s) |
-| `MCP_BEARER_TOKEN` | HTTP only | | Token clients must present to the HTTP entrypoint |
-| `MCP_HTTP_PORT` | HTTP only | `3000` | HTTP listen port |
-
-Copy `.env.example` to `.env` for local development. `.env` is git-ignored.
-
-## Connect an MCP client (stdio)
-
-**Claude Desktop** (`claude_desktop_config.json`):
-
-```json
-{
-  "mcpServers": {
-    "webuddhist-library": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-library/dist/bin/stdio.js"],
-      "env": { "LIBRARY_API_KEY": "your-key-here" }
-    }
-  }
-}
-```
-
-**Cursor**: this repo ships `.cursor/mcp.json`, which launches the built server and forwards
-`LIBRARY_API_KEY` from your shell environment. Export the key in your shell profile; do not paste it
-into the file.
-
-**Claude Code**:
-
-```bash
-claude mcp add webuddhist-library -e LIBRARY_API_KEY=your-key-here -- node /absolute/path/to/mcp-library/dist/bin/stdio.js
-```
-
-Try it with the MCP Inspector:
-
-```bash
-LIBRARY_API_KEY=... npm run inspect
-```
-
-## Tools
-
-Ids come in three kinds. A **text** is a work. An **edition** is a concrete readable version of a text
-(content, segments and alignments hang off editions). A **segment** is a paragraph or verse of an
-edition. Positions in content are Unicode code points, end-exclusive. Lists have no totals: follow
-`next_offset` while `has_more` is true.
-
-| Tool | What it does |
+| Skill | Use it when |
 |---|---|
-| `search_texts` | Find texts by title and filters (language, category, tags, author, BDRC/Wikidata id) |
-| `get_text` | One text with titles, contributors, editions, translations, commentaries, optional family |
-| `read_edition` | Read a window of an edition's content; accepts an edition id or a text id |
-| `get_full_content` | Whole text of an edition in one call: pages all segments, spans first start to last end, restores line breaks |
-| `search_content` | Full-text search inside editions, with context and segment ids |
-| `get_segment` | One segment with its text, optionally with related segments in another language |
-| `list_segments` | Page through an edition's segments with their text |
-| `get_aligned_segments` | Side-by-side aligned segments between two editions (lists targets if none given) |
-| `get_edition` | Edition metadata, aligned editions, recordings; optional TOC, pagination, notes, marks, download URL |
-| `search_persons` | Find people by name or BDRC/Wikidata id |
-| `get_person` | One person and the texts they contributed to |
-| `browse_categories` | Walk the category tree |
-| `list_tags` | All tags |
-| `list_languages` | All language codes |
-| `get_recording` | Recording metadata and a temporary audio URL |
+| `cite-buddhist-text` | quote a passage verbatim with text, edition, segment and span |
+| `compare-translations` | show the original and a translation aligned segment by segment |
+| `build-reading-list` | build a cited reading list for a topic, category, tag, author or language |
 
-Every tool is read-only. Upstream failures come back as tool errors with actionable text
-(bad key, not found, invalid parameters, rate limit, upstream outage, schema drift).
+The full catalogue with the tools each skill uses is in [skills/README.md](skills/README.md).
 
-## Hosted mode (Streamable HTTP)
+## The server
 
-`bin/http.ts` serves the same tools over Streamable HTTP at `/mcp`, stateless. Because it holds
-the library key, it refuses to start without `MCP_BEARER_TOKEN` and rejects requests that do not
-carry `Authorization: Bearer <token>`. Put a real identity layer (OAuth or an identity-aware proxy)
-in front of it before exposing it to end users.
+`@webuddhist/connector-server` exposes the library's read-only API as 15 MCP tools (search, read, segments, alignments, people, categories, tags, recordings). The library API key never leaves the process that holds it: locally it comes from your host's secure config; in hosted mode it stays on the server.
 
 ```bash
-LIBRARY_API_KEY=... MCP_BEARER_TOKEN=$(openssl rand -hex 24) npm run dev:http
+npm install && npm run build
+cp .env.example .env            # add LIBRARY_API_KEY
+npm run check                   # health + key check
+npm run inspect                 # MCP Inspector
 ```
+
+## Repository layout
+
+```
+connector.json              single source of truth (name, version, server, host knobs)
+skills/                     portable skills (SKILL.md folders)
+.claude-plugin/ GEMINI.md gemini-extension.json   generated host manifests (repo root is the plugin/extension)
+wrappers/dsh-bundle/        generated DeepSeek Harness bundle
+packages/library-client     typed client for the library API + in-memory fake
+packages/connector-server   MCP tools, createServer, stdio entrypoint
+packages/connector-manifest connector.json schema, skills scanner, wrapper generators
+apps/remote                 hosted entrypoint (Streamable HTTP; Auth0 in Phase B)
+docs/                       architecture, ADRs, generated install guides
+evals/                      eval tasks for the optimization loop (Phase D)
+```
+
+Run `npm run generate` after changing `connector.json` or a skill; CI fails if a generated file is stale. See [docs/architecture.md](docs/architecture.md) and the ADRs in [docs/adr](docs/adr/).
 
 ## Development
 
 ```bash
-npm run typecheck
+npm run build            # tsc -b
+npm test                 # all workspaces, in-memory fake
+npm run test:live        # real library, needs LIBRARY_API_KEY
 npm run lint
-npm test            # unit + tool tests against an in-memory fake of the library
-npm run test:live   # needs LIBRARY_API_KEY; hits the real library
-npm run record-fixtures   # needs LIBRARY_API_KEY; records real responses for the contract test
+npm run generate:check   # wrapper drift
+npm run verify           # drift + claude plugin validate
 ```
 
-Layout:
+Node 24 (`.nvmrc`), npm workspaces, TypeScript, zod, vitest.
 
-- `src/library/client.ts` is the single seam: the `LibraryClient` interface. `http-client.ts` is the
-  production adapter, `test/fakes/fake-library-client.ts` the test adapter.
-- `src/tools/*` are plain functions of `(deps, input)`; `src/server.ts` registers them on an `McpServer`.
-- `bin/stdio.ts` and `bin/http.ts` only choose a transport.
+## Status
 
-## Security notes
-
-- The key is read once in `src/config.ts` and handed only to the HTTP adapter.
-- Error messages are built from status + path + a short body excerpt, never from request headers.
-- `src/` may not write to stdout (`no-console` lint rule); logs go to stderr.
-- Never commit `.env`; `.env.example` lists variable names only.
+Phase A (this release): skills, server, generated wrappers in **local mode** (the host runs the connector on your machine with your key). Phase B adds the hosted connector with WeBuddhist sign-in (Auth0) so claude.ai and ChatGPT can connect. Phase C completes the DeepSeek Harness bundle. Phase D adds evals and the GEPA optimization loop that proposes skill improvements as pull requests.

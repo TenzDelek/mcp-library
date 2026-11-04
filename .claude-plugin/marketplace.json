@@ -1,0 +1,28 @@
+{
+  "name": "webuddhist",
+  "owner": {
+    "name": "WeBuddhist",
+    "url": "https://webuddhist.com"
+  },
+  "description": "Buddhist Creator Connector for Claude Code, claude.ai and Cowork.",
+  "metadata": {
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "buddhist-creator-connector",
+      "source": "./",
+      "description": "Find, read, cite and compare Buddhist texts from the WeBuddhist Library: Tibetan canon, translations, commentaries, chants and recordings.",
+      "version": "0.2.0",
+      "category": "research",
+      "tags": [
+        "buddhism",
+        "tibetan",
+        "sutra",
+        "citation",
+        "translation",
+        "webuddhist"
+      ]
+    }
+  ]
+}

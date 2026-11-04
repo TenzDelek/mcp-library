@@ -1,0 +1,22 @@
+{
+  "name": "@webuddhist/connector-manifest",
+  "version": "0.2.0",
+  "private": true,
+  "description": "connector.json schema, skills scanner and per-store wrapper generators",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    }
+  },
+  "dependencies": {
+    "@webuddhist/connector-server": "^0.2.0",
+    "yaml": "^2.8.1",
+    "zod": "^4.6.7"
+  }
+}

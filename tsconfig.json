@@ -1,19 +1,9 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "lib": ["ES2022"],
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "declaration": false,
-    "sourceMap": true,
-    "outDir": "dist",
-    "rootDir": ".",
-    "types": ["node"]
-  },
-  "include": ["src/**/*.ts", "bin/**/*.ts"],
-  "exclude": ["node_modules", "dist", "test", "scripts"]
+  "files": [],
+  "references": [
+    { "path": "packages/library-client" },
+    { "path": "packages/connector-server" },
+    { "path": "packages/connector-manifest" },
+    { "path": "apps/remote" }
+  ]
 }

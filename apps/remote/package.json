@@ -1,0 +1,20 @@
+{
+  "name": "@webuddhist/connector-remote",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Hosted Streamable HTTP entrypoint for the Buddhist Creator Connector",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=../../.env --import tsx src/main.ts",
+    "start": "node dist/src/main.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@webuddhist/connector-server": "^0.2.0",
+    "@webuddhist/library-client": "^0.2.0"
+  }
+}

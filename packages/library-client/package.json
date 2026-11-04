@@ -1,0 +1,35 @@
+{
+  "name": "@webuddhist/library-client",
+  "version": "0.2.0",
+  "description": "Typed client for the WeBuddhist Library (OpenPecha API v2): schemas, HTTP adapter and an in-memory fake for tests",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TenzDelek/buddhist-creator-connector",
+    "directory": "packages/library-client"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./testing": {
+      "types": "./dist/src/testing/index.d.ts",
+      "default": "./dist/src/testing/index.js"
+    }
+  },
+  "files": [
+    "dist/src",
+    "README.md"
+  ],
+  "scripts": {
+    "record-fixtures": "node --env-file-if-exists=../../.env --import tsx scripts/record-fixtures.ts"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  }
+}

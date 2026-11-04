@@ -1,0 +1,39 @@
+{
+  "name": "@webuddhist/connector-server",
+  "version": "0.2.0",
+  "description": "Buddhist Creator Connector: MCP server exposing the WeBuddhist Library as read-only tools (stdio entrypoint)",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TenzDelek/buddhist-creator-connector",
+    "directory": "packages/connector-server"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "buddhist-creator-connector": "dist/bin/stdio.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    }
+  },
+  "files": [
+    "dist/src",
+    "dist/bin",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "node --env-file-if-exists=../../.env --import tsx bin/stdio.ts",
+    "check": "node --env-file-if-exists=../../.env --import tsx bin/stdio.ts --check",
+    "test:live": "VITEST_LIVE=1 node --env-file-if-exists=../../.env ../../node_modules/.bin/vitest run"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@webuddhist/library-client": "^0.2.0",
+    "zod": "^4.6.7"
+  }
+}
