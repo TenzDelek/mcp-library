@@ -11,7 +11,7 @@ It ships as a *connector* for every major host and as portable [Agent Skills](ht
 | ChatGPT | custom connector (hosted URL, Phase B) | [docs/install/chatgpt.md](docs/install/chatgpt.md) |
 | Gemini CLI | extension from this repo | [docs/install/gemini-cli.md](docs/install/gemini-cli.md) |
 | DeepSeek Harness | `@webuddhist/buddhist-creator-dsh` bundle | [docs/install/deepseek-harness.md](docs/install/deepseek-harness.md) |
-| Any agent via the skills CLI | `npx skills add TenzDelek/buddhist-creator-connector` | [docs/install/skills-cli.md](docs/install/skills-cli.md) |
+| Any agent via the skills CLI | `npx skills add Webuddhist-tech/buddhist-creator-connector` | [docs/install/skills-cli.md](docs/install/skills-cli.md) |
 
 ## Skills
 

@@ -5,7 +5,7 @@
 The repository is a Gemini CLI extension (skills + MCP server + `GEMINI.md`).
 
 ```bash
-gemini extensions install https://github.com/TenzDelek/buddhist-creator-connector
+gemini extensions install https://github.com/Webuddhist-tech/buddhist-creator-connector
 ```
 
 Gemini CLI will ask for `LIBRARY_API_KEY` (your WeBuddhist Library API key) and keep it in the system keychain. The extension runs the connector locally with `npx -y @webuddhist/connector-server`.

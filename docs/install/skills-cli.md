@@ -5,9 +5,9 @@
 Install the skills into any agent the [skills CLI](https://skills.sh) supports (Claude Code, Cursor, Codex, Windsurf, …):
 
 ```bash
-npx skills add TenzDelek/buddhist-creator-connector
+npx skills add Webuddhist-tech/buddhist-creator-connector
 # or pick one
-npx skills add TenzDelek/buddhist-creator-connector --skill build-reading-list
+npx skills add Webuddhist-tech/buddhist-creator-connector --skill build-reading-list
 ```
 
 Then connect the server in your agent's MCP settings. Locally:

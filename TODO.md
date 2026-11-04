@@ -15,7 +15,7 @@ What is left after Phase A (restructure, skills, generated wrappers, CI). The fu
 
 ## Phase A follow-ups
 
-- [ ] Verify a real install once the packages are on npm: `/plugin marketplace add TenzDelek/buddhist-creator-connector` → `/plugin install buddhist-creator-connector@webuddhist` (key prompt, tools listed); `gemini extensions install https://github.com/TenzDelek/buddhist-creator-connector`; `npx skills add TenzDelek/buddhist-creator-connector` lists exactly 3 skills.
+- [ ] Verify a real install once the packages are on npm: `/plugin marketplace add Webuddhist-tech/buddhist-creator-connector` → `/plugin install buddhist-creator-connector@webuddhist` (key prompt, tools listed); `gemini extensions install https://github.com/Webuddhist-tech/buddhist-creator-connector`; `npx skills add Webuddhist-tech/buddhist-creator-connector` lists exactly 3 skills.
 - [ ] Run the three skills end to end in Claude Code against the live library and fix wording that leads the model astray (quote accuracy, citation format).
 - [ ] Add `claude plugin validate --strict` once CI's Claude Code version is ≥ 2.1.281 (MCP entry checks); drop `continue-on-error`.
 - [ ] Record new fixtures for `get_full_content` paths (`npm run record-fixtures`) when the library changes.

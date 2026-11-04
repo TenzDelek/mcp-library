@@ -5,7 +5,7 @@
 The repository is a Claude Code plugin (skills + MCP server) and its own marketplace.
 
 ```text
-/plugin marketplace add TenzDelek/buddhist-creator-connector
+/plugin marketplace add Webuddhist-tech/buddhist-creator-connector
 /plugin install buddhist-creator-connector@webuddhist
 ```
 

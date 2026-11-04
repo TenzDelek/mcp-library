@@ -13,7 +13,7 @@ Portable [Agent Skills](https://agentskills.io) for the Buddhist Creator Connect
 ## Install the skills alone
 
 ```bash
-npx skills add TenzDelek/buddhist-creator-connector
+npx skills add Webuddhist-tech/buddhist-creator-connector
 ```
 
 The skills need the connector's tools to be useful: see [docs/install](../docs/install/) for connecting the server in your host.

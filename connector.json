@@ -5,8 +5,8 @@
   "description": "Find, read, cite and compare Buddhist texts from the WeBuddhist Library: Tibetan canon, translations, commentaries, chants and recordings.",
   "version": "0.2.0",
   "license": "MIT",
-  "homepage": "https://github.com/TenzDelek/buddhist-creator-connector",
-  "repository": "https://github.com/TenzDelek/buddhist-creator-connector",
+  "homepage": "https://github.com/Webuddhist-tech/buddhist-creator-connector",
+  "repository": "https://github.com/Webuddhist-tech/buddhist-creator-connector",
   "author": { "name": "WeBuddhist", "url": "https://webuddhist.com" },
   "server": {
     "name": "webuddhist-library",

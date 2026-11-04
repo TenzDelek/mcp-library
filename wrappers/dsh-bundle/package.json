@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "Buddhist Creator Connector bundle for DeepSeek Harness",
   "license": "MIT",
-  "homepage": "https://github.com/TenzDelek/buddhist-creator-connector",
+  "homepage": "https://github.com/Webuddhist-tech/buddhist-creator-connector",
   "files": [
     "cordis.patch.yml",
     "skills",
