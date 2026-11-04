@@ -1,4 +1,5 @@
 # Buddhist Creator Connector
+<img width="3002" height="892" alt="image" src="https://github.com/user-attachments/assets/7e15f91b-f35c-4de6-9326-5178b4319e74" />
 
 Give AI assistants a trustworthy way into the **WeBuddhist Library**: find Buddhist texts (Tibetan canon, translations, commentaries, chants and recordings), read them, quote them with exact citations, and compare an original with its translation side by side.
 
